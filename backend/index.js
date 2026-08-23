@@ -18,7 +18,7 @@ const app = express();
 const server = http.createServer(app);
 
 const io = new Server(server, {
-    cors: { origin: 'https://ujoyn.vercel.app/', credentials: true },
+    cors: { origin: ['http://localhost:3000', 'https://ujoyn.vercel.app'], credentials: true },
 });
 
 
@@ -45,7 +45,7 @@ io.on('connection', (socket) => {
 
 app.set('io', io);
 
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: 'https://ujoyn.vercel.app', credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
