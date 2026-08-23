@@ -15,7 +15,7 @@ export function SocketProvider({ children }) {
         if (!user) return;
 
         const token = getAccessToken();
-        const s = socketIO('http://localhost:5000', { auth: { token } });
+        const s = socketIO(process.env.REACT_APP_API_URL?.replace('/api', '') || 'http://localhost:5000', { auth: { token } });
 
         s.on('new_notification', (notification) => {
             setNotifications((prev) => [notification, ...prev]);
