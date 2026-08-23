@@ -1,0 +1,408 @@
+.profile-page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-page);
+    padding: 24px 32px;
+    box-sizing: border-box;
+}
+
+.profile-page-container {
+    max-width: 1300px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin: 0 auto;
+}
+
+.profile-search-wrapper {
+    position: relative;
+    max-width: 320px;
+    margin-bottom: 20px;
+}
+
+.profile-search-bar.MuiPaper-root {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid #e5e5e5;
+    background-color: #ffffff;
+}
+
+.profile-search-icon {
+    color: var(--text-soft);
+    font-size: 20px;
+}
+
+.profile-search-dropdown.MuiPaper-root {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    z-index: 20;
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+.profile-search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.profile-search-result-item:last-child {
+    border-bottom: none;
+}
+
+.profile-search-avatar.MuiAvatar-root {
+    width: 34px;
+    height: 34px;
+    font-size: 14px;
+}
+
+.profile-search-nickname.MuiTypography-root {
+    flex: 1;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.profile-search-add-button.MuiButton-root {
+    text-transform: none;
+    border-radius: 999px;
+    font-size: 12px;
+    padding: 4px 14px;
+    background-color: var(--color-primary);
+}
+
+.profile-header-card {
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.profile-card-cover {
+    width: 100%;
+    height: 280px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent-pink));
+    background-size: cover;
+    background-position: top;
+    cursor: pointer;
+}
+
+.cover-lightbox {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.cover-lightbox-image {
+    max-width: 92vw;
+    max-height: 92vh;
+    object-fit: contain;
+}
+
+.cover-lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.cover-lightbox-close:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.profile-header-card .profile-card-body {
+    padding: 20px 24px 0;
+}
+
+.row.profile-top-row {
+    margin-top: -55px;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+.profile-avatar.MuiAvatar-root {
+    width: 96px;
+    height: 96px;
+    border: 4px solid #ffffff;
+    font-size: 32px;
+    font-weight: 600;
+    background-color: var(--surface-lavender);
+    color: var(--color-primary);
+}
+
+.profile-online-badge .MuiBadge-dot {
+    background-color: #4caf50;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+
+.profile-edit-button.MuiButton-root {
+    background-color: var(--color-primary);
+    text-transform: none;
+    border-radius: 999px;
+    padding: 8px 20px;
+}
+
+.profile-edit-button.MuiButton-root:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.profile-nickname.MuiTypography-root {
+    font-weight: 600;
+    margin: 4px 0 4px;
+    color: var(--text-strong);
+}
+
+.profile-subtitle.MuiTypography-root {
+    font-size: 14px;
+    color: var(--text-soft);
+    margin: 0 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.profile-subtitle-icon {
+    font-size: 16px;
+}
+
+.profile-subtitle-dot {
+    color: #cccccc;
+}
+
+.profile-tabs.MuiTabs-root {
+    border-bottom: none;
+    min-height: 40px;
+    margin: 0;
+}
+
+.profile-tabs .MuiTabs-flexContainer {
+    margin-bottom: 0;
+}
+
+.profile-tabs .MuiTab-root {
+    text-transform: none;
+    font-weight: 500;
+    font-size: 14px;
+    min-height: 40px;
+    padding: 6px 4px;
+    margin-right: 20px;
+    color: var(--text-soft);
+}
+
+.profile-tabs .Mui-selected {
+    color: var(--color-primary) !important;
+}
+
+.profile-tabs .MuiTabs-indicator {
+    background-color: var(--color-primary);
+}
+
+.profile-lower-row {
+    margin: 0 !important;
+}
+
+.profile-content-card {
+    padding: 20px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.profile-stats-card {
+    padding: 20px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.profile-section-title.MuiTypography-root {
+    font-weight: 600;
+    margin: 0 0 14px;
+    color: var(--text-strong);
+}
+
+.profile-hobby-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.profile-hobby-chip.MuiChip-root {
+    background-color: var(--surface-lavender);
+    color: var(--color-primary-dark);
+    font-size: 13px;
+}
+
+.profile-feed-empty {
+    background-color: var(--surface-lavender);
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+}
+
+.profile-feed-item {
+    background-color: var(--surface-lavender);
+    border-radius: 10px;
+    padding: 14px;
+    height: 100%;
+}
+
+.profile-feed-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4px;
+}
+
+.profile-feed-item-actions {
+    display: flex;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.profile-feed-item-edit.MuiIconButton-root {
+    color: var(--color-primary);
+    padding: 4px;
+}
+
+.profile-feed-item-edit.MuiIconButton-root:hover {
+    background-color: var(--surface-lavender);
+}
+
+.profile-feed-item-delete.MuiIconButton-root {
+    color: #c62828;
+    padding: 4px;
+}
+
+.profile-feed-item-delete.MuiIconButton-root:hover {
+    background-color: #fdecec;
+}
+
+.profile-feed-item-title.MuiTypography-root {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 2px;
+    color: var(--text-strong);
+}
+
+.profile-feed-item-description.MuiTypography-root {
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-bottom: 6px;
+}
+
+.profile-feed-item-meta.MuiTypography-root {
+    font-size: 12px;
+    color: var(--text-soft);
+}
+
+.profile-photo-item {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.profile-photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-stats-title.MuiTypography-root {
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-strong);
+}
+
+.profile-stats-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.profile-stat-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+}
+
+.profile-stat-icon {
+    font-size: 20px;
+    color: var(--color-primary);
+}
+
+.profile-stat-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-strong);
+}
+
+.profile-stat-label {
+    font-size: 12px;
+    color: var(--text-soft);
+}
+
+.profile-loading {
+    padding: 40px;
+    text-align: center;
+}
+
+.profile-request-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.profile-reject-button.MuiButton-root {
+    text-transform: none;
+    border-radius: 999px;
+    padding: 8px 20px;
+    color: #c62828;
+    border-color: #f5c6c6;
+}
+
+.profile-reject-button.MuiButton-root:hover {
+    background-color: #fdecec;
+    border-color: #f5c6c6;
+}
+
+.row.profile-lower-row {
+    align-items: flex-start;
+}
+
+.profile-photo-item {
+    position: relative;
+}
+
+.profile-photo-delete.MuiIconButton-root {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    padding: 4px;
+}
+
+.profile-photo-delete.MuiIconButton-root:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}

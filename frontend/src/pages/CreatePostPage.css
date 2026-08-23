@@ -1,0 +1,148 @@
+.create-post-page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-page);
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.create-post-container {
+    padding: 0 !important;
+}
+
+.create-post-title.MuiTypography-root {
+    font-weight: 600;
+    font-size: 26px;
+    margin-bottom: 24px;
+    color: var(--text-strong);
+}
+
+.create-post-error {
+    margin-bottom: 20px;
+}
+
+.create-post-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 24px;
+}
+
+.create-post-form-card {
+    background-color: #ffffff;
+    padding: 24px;
+}
+
+.create-post-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.create-post-section:last-child {
+    margin-bottom: 0;
+}
+
+.create-post-section-title.MuiTypography-root {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-strong);
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.create-post-section-icon {
+    color: var(--color-primary);
+    font-size: 16px;
+}
+
+.create-post-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.create-post-city-label {
+    background-color: var(--bg-page);
+    padding-top: 14px;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    color: var(--bg-page) !important;
+    gap: 6px;
+}
+
+.create-post-preview-card {
+    background-color: #ffffff;
+    padding: 20px;
+    height: fit-content;
+}
+
+.create-post-preview-title.MuiTypography-root {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-bottom: 12px;
+}
+
+.create-post-preview-box {
+    background-color: var(--surface-lavender);
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 16px;
+}
+
+.create-post-preview-chip.MuiChip-root {
+    background-color: #ffffff;
+    color: var(--color-primary-dark);
+    font-size: 11px;
+    height: 22px;
+    margin-bottom: 8px;
+}
+
+.create-post-preview-name.MuiTypography-root {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--text-strong);
+    margin-bottom: 4px;
+}
+
+.create-post-preview-desc.MuiTypography-root {
+    font-size: 13px;
+    color: var(--text-soft);
+    margin-bottom: 6px;
+}
+
+.create-post-preview-meta.MuiTypography-root {
+    font-size: 12px;
+    color: var(--text-soft);
+}
+
+.create-post-submit.MuiButton-root {
+    background-color: var(--color-primary);
+    text-transform: none;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.create-post-submit.MuiButton-root:hover {
+    background-color: var(--color-primary-dark);
+}
+
+@media (max-width: 800px) {
+    .create-post-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.create-post-form-card .MuiOutlinedInput-root {
+    border-radius: 12px;
+}
+
+.create-post-form-card .MuiPickersOutlinedInput-root {
+    border-radius: 12px;
+}
+

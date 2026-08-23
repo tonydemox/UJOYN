@@ -1,0 +1,111 @@
+.feed-page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-page);
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.feed-container {
+    padding: 0 !important;
+}
+
+.feed-title.MuiTypography-root {
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--text-strong);
+}
+
+.feed-create-button.MuiButton-root {
+    background-color: var(--color-primary);
+    text-transform: none;
+    border-radius: 8px;
+}
+
+.feed-create-button.MuiButton-root:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.feed-card.MuiCard-root {
+    border: none;
+    background-color: #ffffff;
+    height: 100%;
+}
+
+.feed-card-chip.MuiChip-root {
+    background-color: var(--surface-lavender);
+    color: var(--color-primary-dark);
+    margin-bottom: 10px;
+}
+
+.feed-card-title.MuiTypography-root {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text-strong);
+}
+
+.feed-card-meta.MuiTypography-root {
+    margin-bottom: 12px;
+    color: var(--text-soft);
+}
+
+.feed-card-description.MuiTypography-root {
+    margin-bottom: 16px;
+    color: var(--text-soft);
+}
+
+.feed-card-author {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.feed-card-avatar.MuiAvatar-root {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+}
+
+.feed-card-join.MuiButton-root {
+    background-color: var(--color-primary);
+    text-transform: none;
+    border-radius: 8px;
+}
+
+.feed-card-join.MuiButton-contained {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+.feed-card-join.MuiButton-contained:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.feed-card-join.MuiButton-outlined {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.feed-card-join.MuiButton-outlined:hover {
+    background-color: var(--surface-lavender);
+    border-color: var(--color-primary);
+}
+
+.feed-card-join.MuiButton-root {
+    text-transform: none;
+    border-radius: 8px;
+}
+
+.feed-loading {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.feed-empty {
+    text-align: center;
+    margin-top: 60px;
+    color: var(--text-soft);
+}

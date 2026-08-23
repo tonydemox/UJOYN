@@ -1,0 +1,66 @@
+.update-post-page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-page);
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.update-post-loading {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-page);
+}
+
+.update-post-container {
+    padding: 0 !important;
+}
+
+.update-post-title.MuiTypography-root {
+    font-weight: 600;
+    font-size: 26px;
+    margin-bottom: 24px;
+    color: var(--text-strong);
+}
+
+.update-post-form-card {
+    background-color: #ffffff;
+    padding: 24px;
+}
+
+.update-post-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.update-post-form .MuiInputBase-input {
+    padding: 14px;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.update-post-form .MuiOutlinedInput-root {
+    border-radius: 12px;
+}
+
+.update-post-form button[type="submit"].MuiButton-root {
+    background-color: var(--color-primary);
+    text-transform: none;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+.update-post-form button[type="submit"].MuiButton-root:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.update-post-form button[type="submit"].MuiButton-root:disabled {
+    background-color: #c9c2f5;
+    color: #ffffff;
+}
