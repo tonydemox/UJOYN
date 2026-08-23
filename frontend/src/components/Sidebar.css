@@ -94,3 +94,8 @@
     font-size: 15px;
 }
 
+.sidebar-brand img {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+}

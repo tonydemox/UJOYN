@@ -5,6 +5,7 @@ import { useAuth } from '../auth/AuthContext';
 import { Explore, Person, People, Event, Settings, PhotoLibrary } from '@mui/icons-material';
 import { Nav } from 'react-bootstrap';
 import './Sidebar.css';
+import UJOYN_LOGO from '../UJOYN_LOGO.png';
 
 export default function Sidebar() {
     const { user, logout } = useAuth();
@@ -26,13 +27,14 @@ export default function Sidebar() {
         { to: '/friends', label: 'Amici', icon: <People /> },
         { to: '/posts/new', label: 'Crea Evento', icon: <Event /> },
         { to: '/profile', label: 'Profilo', icon: <Person /> },
-        { to: '/settings', label: 'Impostazioni', icon: <Settings />, disabled: true },
     ];
 
     return (
         <div className="sidebar-wrapper">
             <div className="sidebar-card bubble-card">
-                <div className="sidebar-brand">poisivede10</div>
+                <div className="sidebar-brand">
+                    UJOYN
+                </div>
 
                 <Nav className="flex-column sidebar-nav">
                     {links.map((link) => (

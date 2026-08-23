@@ -60,7 +60,7 @@ export default function GalleryPage() {
                     <Row className="g-3">
                         {allPhotos.map((photo, i) => (
                             <Col key={i} xs={6} sm={4} md={3} lg={2}>
-                                <div className="gallery-item">
+                                <div className="gallery-item bubble-card">
                                     <img src={`${photo.url}`} alt={photo.postTitle} />
                                     <div className="gallery-item-caption">
                                         <span className="gallery-item-title">{photo.postTitle}</span>

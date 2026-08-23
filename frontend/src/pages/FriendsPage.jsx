@@ -56,7 +56,7 @@ export default function FriendsPage() {
     return (
         <div className="friends-page">
             <Container fluid className="friends-container">
-                {/* CARD 1: Richieste di amicizia ricevute */}
+
                 <Card className="friends-main-card bubble-card" variant="outlined">
                     <CardContent>
                         <Typography variant="subtitle1" className="friends-section-title">
@@ -115,7 +115,7 @@ export default function FriendsPage() {
                     </CardContent>
                 </Card>
 
-                {/* CARD 2: Notifiche di partecipazione ai propri post */}
+
                 <Card className="friends-main-card bubble-card" variant="outlined" style={{ marginTop: 24 }}>
                     <CardContent>
                         <Typography variant="subtitle1" className="friends-section-title">

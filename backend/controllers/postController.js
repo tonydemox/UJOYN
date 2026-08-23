@@ -154,7 +154,7 @@ exports.getMyPhotos = async (req, res) => {
             post.photos
                 .filter((photo) => photo.uploadedBy?.toString() === req.userId)
                 .map((photo) => ({
-                    _id: photo._id,        // aggiungi questo campo
+                    _id: photo._id,
                     url: photo.url,
                     uploadedAt: photo.uploadedAt,
                     postTitle: post.title,
