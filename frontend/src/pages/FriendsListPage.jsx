@@ -20,7 +20,6 @@ export default function FriendsListPage() {
             .finally(() => setIsLoading(false));
     }, [id]);
 
-    if (isLoading) return <Typography className="profile-loading">Caricamento amici...</Typography>;
 
     return (
         <div className="participants-page">
