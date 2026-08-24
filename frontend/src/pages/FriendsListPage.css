@@ -1,0 +1,60 @@
+.friendsList-page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-page, #f8f9fa);
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.friendsList-container {
+    padding: 0 !important;
+    margin: 0 auto;
+}
+
+.profile-loading {
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+    font-size: 16px;
+    color: #666666;
+}
+
+.friendsList-title.MuiTypography-root {
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--text-strong, #333333);
+}
+
+.friendsList-main-card.MuiCard-root {
+    border: 1px solid #e0e0e0;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.requests-empty.MuiTypography-root {
+    padding: 40px;
+    text-align: center;
+    font-size: 16px;
+}
+
+
+.friendsList-list {
+    padding: 0 !important;
+}
+
+.friendsList-item.MuiListItem-root {
+    padding: 16px 24px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+    cursor: pointer; /* Mostra la manina al passaggio del mouse */
+}
+
+.friendsList-item.MuiListItem-root:last-child {
+    border-bottom: none;
+}
+
+.friendsList-item.MuiListItem-root:hover {
+    background-color: #f5f5f5;
+}

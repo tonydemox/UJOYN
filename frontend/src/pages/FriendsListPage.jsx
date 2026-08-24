@@ -3,7 +3,7 @@ import {Link, useNavigate, useParams} from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import axiosInstance from "../api/axiosInstance";
 import {Avatar, Card, CardContent, List, ListItem, ListItemAvatar, ListItemText, Typography} from "@mui/material";
-import './ParticipantsPage.css';
+import './FriendsListPage.css';
 
 export default function FriendsListPage() {
     const [myFriends, setMyFriends] = useState([]);
@@ -22,25 +22,25 @@ export default function FriendsListPage() {
 
 
     return (
-        <div className="participants-page">
-            <Container fluid className="participants-container">
+        <div className="friendsList-page">
+            <Container fluid className="friendsList-container">
                 <Row>
                 <Col>
                     <Typography variant="h4" className="gallery-title">Lista amici</Typography>
                 </Col>
                 </Row>
-                <Card className="participants-main-card bubble-card" variant="outlined">
+                <Card className="friendsList-main-card bubble-card" variant="outlined">
                     <CardContent>
                     {myFriends.length === 0 ? (
                         <Typography color="text.secondary" className="requests-empty">
                             Nessuna amico al momento.
                         </Typography>
                     ) : (
-                        <List className="participants-list">
+                        <List className="friendsList-list">
                             {myFriends.map((n) => (
                                 <ListItem
                                     key={n._id}
-                                    className="participants-item"
+                                    className="friendsList-item"
                                     onClick={() => navigate(`/users/${n._id}`)}
                                 >
                                     <ListItemAvatar>
