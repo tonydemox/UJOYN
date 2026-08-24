@@ -178,3 +178,30 @@ exports.removeFriend = async (req, res) => {
         res.status(500).json({ message: 'Errore durante la rimozione', error: error.message });
     }
 };
+
+exports.getFriendsList = async (req, res) => {
+    try {
+        const {userId} = req.params;
+
+        const friendships = await Friendship.find({
+            status: 'accepted',
+            $or: [
+                {requester: req.userId},
+                {recipient: req.userId},
+            ],
+        })
+            .populate('requester', 'nickname profilePicture')
+            .populate('recipient', 'nickname profilePicture')
+            .sort({createdAt: -1});
+
+        const friends = friendships.map((f) => {
+            const isRequester = f.requester._id.toString() === userId;
+            return isRequester ? f.recipient : f.requester;
+        });
+
+        res.status(200).json(friends);
+    } catch (error) {
+        console.error('Errore recupero lista amici:', error);
+        res.status(500).json({ message: 'Errore nel recupero degli amici', error: error.message });
+    }
+};

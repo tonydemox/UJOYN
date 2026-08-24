@@ -14,6 +14,8 @@ import FriendsPage from './pages/FriendsPage';
 import UpdatePostPage from './pages/UpdatePostPage';
 import PublicProfilePage from './pages/PublicProfilePage';
 import ParticipantsPage from './pages/ParticipantsPage';
+import FriendsListPage from './pages/FriendsListPage';
+
 import { SocketProvider } from './socket/SocketContext';
 
 function HomeRedirect() {
@@ -53,6 +55,7 @@ function App() {
                         <Route path="/posts/:id/edit" element={<PrivateRoute><UpdatePostPage /></PrivateRoute>} />
                         <Route path="/users/:id" element={<PrivateRoute><PublicProfilePage /></PrivateRoute>} />
                         <Route path="/participants/:id" element={<PrivateRoute><ParticipantsPage /></PrivateRoute>} />
+                        <Route path="/friends/:id" element={<PrivateRoute><FriendsListPage /></PrivateRoute>} />
                     </Routes>
                 </AppLayout>
                 </SocketProvider>

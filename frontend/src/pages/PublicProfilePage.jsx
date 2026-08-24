@@ -171,7 +171,7 @@ export default function PublicProfilePage() {
                     <div className="profile-stats-card bubble-card">
                         <Typography variant="subtitle2" className="profile-stats-title">Statistiche</Typography>
                         <div className="profile-stats-grid">
-                            <div className="profile-stat-block">
+                            <div className="profile-stat-block" onClick={() => navigate(`/friends/${id}`)}>
                                 <span className="profile-stat-value">{profile.friendsCount}</span>
                                 <span className="profile-stat-label">Amici</span>
                             </div>

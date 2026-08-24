@@ -467,10 +467,10 @@ export default function ProfilePage() {
                     <div className="profile-card profile-stats-card bubble-card">
                         <Typography variant="subtitle2" className="profile-stats-title">Statistiche</Typography>
                         <div className="profile-stats-grid">
-                            <div className="profile-stat-block">
+                            <div className="profile-stat-block" onClick={() => navigate(`/friends/${user.id}`)}>
                                 <PeopleAlt className="profile-stat-icon" />
                                 <span className="profile-stat-value">{user.friendsCount || 0}</span>
-                                <span className="profile-stat-label">Amici</span>
+                                <span className="profile-stat-label" >Amici</span>
                             </div>
                             <div className="profile-stat-block">
                                 <CalendarMonth className="profile-stat-icon" />
