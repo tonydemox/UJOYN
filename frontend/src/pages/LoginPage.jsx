@@ -29,7 +29,7 @@ export default function LoginPage() {
 
     return (
         <div className="auth-page">
-            <form onSubmit={handleSubmit} className="auth-form">
+            <form onSubmit={handleSubmit} className="auth-form bubble-card">
                 <h1>Accedi</h1>
 
                 {error && <p className="auth-error">{error}</p>}

@@ -1,7 +1,10 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
-import {Card, CardContent, Typography, Avatar, Button, CircularProgress, List, ListItem, ListItemAvatar, ListItemText, } from '@mui/material';
+import { Container } from 'react-bootstrap';
+import {
+    Card, CardContent, Typography, Avatar, Button, CircularProgress,
+    List, ListItem, ListItemAvatar, ListItemText,
+} from '@mui/material';
 import axiosInstance from '../api/axiosInstance';
 import { useAuth } from '../auth/AuthContext';
 import './FriendsPage.css';
@@ -13,10 +16,6 @@ export default function FriendsPage() {
     const [receivedRequests, setReceivedRequests] = useState([]);
     const [notifications, setNotifications] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
-    const loadRequests = useCallback(() => {
-        axiosInstance.get('/friends/requests').then(({ data }) => setReceivedRequests(data));
-    }, []);
 
     useEffect(() => {
         setIsLoading(true);
@@ -45,6 +44,8 @@ export default function FriendsPage() {
         }
     }
 
+    const joinNotifications = notifications.filter((n) => n.type === 'post_join');
+
     if (isLoading) {
         return (
             <div className="friends-page">
@@ -68,49 +69,42 @@ export default function FriendsPage() {
                                 Nessuna richiesta al momento.
                             </Typography>
                         ) : (
-                            <Row className="g-3">
+                            <List className="friends-request-list">
                                 {receivedRequests.map((request) => (
-                                    <Col key={request._id} xs={12} sm={6} lg={4}>
-                                        <Card className="friends-card bubble-card" variant="outlined">
-                                            <CardContent className="friends-card-content">
-                                                <div
-                                                    className="friends-card-clickable"
-                                                    onClick={() => navigate(`/users/${request.requester._id}`)}
-                                                >
-                                                    <Avatar
-                                                        src={request.requester.profilePicture || undefined}
-                                                        className="friends-card-avatar"
-                                                    >
-                                                        {request.requester.nickname.charAt(0).toUpperCase()}
-                                                    </Avatar>
+                                    <ListItem key={request._id} className="friends-request-row">
+                                        <div
+                                            className="friends-request-info"
+                                            onClick={() => navigate(`/users/${request.requester._id}`)}
+                                        >
+                                            <ListItemAvatar>
+                                                <Avatar src={request.requester.profilePicture || undefined}>
+                                                    {request.requester.nickname.charAt(0).toUpperCase()}
+                                                </Avatar>
+                                            </ListItemAvatar>
+                                            <ListItemText primary={request.requester.nickname} />
+                                        </div>
 
-                                                    <Typography className="friends-card-nickname">
-                                                        {request.requester.nickname}
-                                                    </Typography>
-                                                </div>
-
-                                                <Button
-                                                    variant="contained"
-                                                    fullWidth
-                                                    onClick={() => handleAccept(request._id)}
-                                                    className="friends-card-accept"
-                                                >
-                                                    Accetta
-                                                </Button>
-
-                                                <Button
-                                                    variant="outlined"
-                                                    fullWidth
-                                                    onClick={() => handleRemove(request._id)}
-                                                    className="friends-card-reject"
-                                                >
-                                                    Rifiuta
-                                                </Button>
-                                            </CardContent>
-                                        </Card>
-                                    </Col>
+                                        <div className="friends-request-actions">
+                                            <Button
+                                                variant="contained"
+                                                size="small"
+                                                onClick={() => handleAccept(request._id)}
+                                                className="friends-card-accept"
+                                            >
+                                                Accetta
+                                            </Button>
+                                            <Button
+                                                variant="outlined"
+                                                size="small"
+                                                onClick={() => handleRemove(request._id)}
+                                                className="friends-card-reject"
+                                            >
+                                                Rifiuta
+                                            </Button>
+                                        </div>
+                                    </ListItem>
                                 ))}
-                            </Row>
+                            </List>
                         )}
                     </CardContent>
                 </Card>
@@ -119,16 +113,18 @@ export default function FriendsPage() {
                 <Card className="friends-main-card bubble-card" variant="outlined" style={{ marginTop: 24 }}>
                     <CardContent>
                         <Typography variant="subtitle1" className="friends-section-title">
-                            Partecipazioni alle tue attività
+                            Partecipanti alle tue attività
                         </Typography>
 
-                        {notifications.length === 0 ? (
+                        {joinNotifications.length === 0 ? (
                             <Typography color="text.secondary" className="requests-empty">
-                                Nessuna notifica al momento.
+                                Nessun partecipante al momento.
                             </Typography>
                         ) : (
                             <List className="notifications-list">
-                                {notifications.map((n) => (
+                                {joinNotifications
+                                    .filter((n) => n.actor)
+                                    .map((n) => (
                                     <ListItem
                                         key={n._id}
                                         className="notification-item"
@@ -140,14 +136,8 @@ export default function FriendsPage() {
                                             </Avatar>
                                         </ListItemAvatar>
                                         <ListItemText
-                                            primary={
-                                                n.type === 'post_join'
-                                                    ? `${n.actor.nickname} ha aderito a "${n.post?.title}"`
-                                                    : n.type === 'friend_request'
-                                                        ? `${n.actor.nickname} ti ha inviato una richiesta di amicizia`
-                                                        : `${n.actor.nickname} ha accettato la tua richiesta di amicizia`
-                                            }
-                                            secondary={new Date(n.createdAt).toLocaleString('it-IT')}
+                                            primary={n.actor.nickname}
+                                            secondary={`ha aderito a "${n.post?.title}"`}
                                         />
                                     </ListItem>
                                 ))}

@@ -1,8 +1,9 @@
-// src/pages/RegisterPage.jsx
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import axiosInstance from '../api/axiosInstance';
+import CitySearchSelect from '../components/CitySearchSelect';
+import '../components/CitySearchSelect.css';
 import './RegisterPage.css';
 
 export default function RegisterPage() {
@@ -14,9 +15,11 @@ export default function RegisterPage() {
         hobbies: '',
         cityId: '',
     });
+
     const [cities, setCities] = useState([]);
     const [error, setError] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [selectedCity, setSelectedCity] = useState(null);
 
     const { register } = useAuth();
     const navigate = useNavigate();
@@ -40,24 +43,27 @@ export default function RegisterPage() {
     async function handleSubmit(e) {
         e.preventDefault();
         setError('');
+
+        if (!selectedCity) {
+            setError('Seleziona un comune');
+            return;
+        }
+
         setIsSubmitting(true);
-
-        const selectedCity = cities.find((c) => c._id === formData.cityId);
-
         try {
-            await register({
-                nickname: formData.nickname,
-                email: formData.email,
-                password: formData.password,
-                birthDate: formData.birthDate,
-                hobbies: formData.hobbies.split(',').map((h) => h.trim()).filter(Boolean),
+            await axiosInstance.post('/auth/register', {
+                nickname,
+                email,
+                password,
+                birthDate,
+                hobbies: hobbies.split(',').map((h) => h.trim()).filter(Boolean),
                 city: {
                     name: selectedCity.name,
                     province: selectedCity.province,
                     coordinates: [selectedCity.lng, selectedCity.lat],
                 },
             });
-            navigate('/profile');
+            navigate('/login');
         } catch (err) {
             setError(err.response?.data?.message || 'Errore durante la registrazione');
         } finally {
@@ -67,7 +73,7 @@ export default function RegisterPage() {
 
     return (
         <div className="auth-page">
-            <form onSubmit={handleSubmit} className="auth-form">
+            <form onSubmit={handleSubmit} className="auth-form bubble-card">
                 <h1>Registrati</h1>
 
                 {error && <p className="auth-error">{error}</p>}
@@ -97,16 +103,9 @@ export default function RegisterPage() {
                     <input name="hobbies" value={formData.hobbies} onChange={handleChange} placeholder="calcio, lettura, cucina" />
                 </label>
 
-                <label>
+                <label className="create-post-city-label">
                     Città
-                    <select name="cityId" value={formData.cityId} onChange={handleChange} required>
-                        <option value="">Seleziona un comune</option>
-                        {cities.map((city) => (
-                            <option key={city._id} value={city._id}>
-                                {city.name} ({city.province})
-                            </option>
-                        ))}
-                    </select>
+                    <CitySearchSelect cities={cities} value={selectedCity} onSelect={setSelectedCity} />
                 </label>
 
                 <button type="submit" disabled={isSubmitting}>

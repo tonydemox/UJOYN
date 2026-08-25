@@ -111,3 +111,33 @@
 .notification-item.MuiListItem-root:hover {
     background-color: var(--surface-lavender);
 }
+
+.friends-request-list.MuiList-root {
+    padding: 0;
+}
+
+.friends-request-row.MuiListItem-root {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 12px;
+    padding: 10px 12px;
+}
+
+.friends-request-row.MuiListItem-root:hover {
+    background-color: var(--surface-lavender);
+}
+
+.friends-request-info {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    flex: 1;
+    min-width: 0;
+}
+
+.friends-request-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
