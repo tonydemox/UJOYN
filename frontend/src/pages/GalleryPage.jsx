@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 export default function GalleryPage() {
     const [posts, setPosts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isFotoExpanded, setIsFotoExpanded] = useState(false);
     const { socket } = useSocket();
 
     const navigate = useNavigate();
@@ -61,7 +62,7 @@ export default function GalleryPage() {
                         {allPhotos.map((photo, i) => (
                             <Col key={i} xs={6} sm={4} md={3} lg={2}>
                                 <div className="gallery-item bubble-card">
-                                    <img src={`${photo.url}`} alt={photo.postTitle} />
+                                    <img src={`${photo.url}`} alt={photo.postTitle}/>
                                     <div className="gallery-item-caption">
                                         <span className="gallery-item-title">{photo.postTitle}</span>
                                         <span className="gallery-item-author"

@@ -127,7 +127,6 @@ export default function CreatePostPage() {
                         </LocalizationProvider>
 
                             <label className="create-post-city-label">
-
                                 <CitySearchSelect cities={cities} value={selectedCity} onSelect={setSelectedCity} />
                             </label>
 

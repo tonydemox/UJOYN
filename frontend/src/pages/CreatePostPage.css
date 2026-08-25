@@ -139,10 +139,29 @@
 }
 
 .create-post-form-card .MuiOutlinedInput-root {
-    border-radius: 12px;
+    border-radius: 22px;
 }
 
 .create-post-form-card .MuiPickersOutlinedInput-root {
-    border-radius: 12px;
+    border-radius: 22px;
 }
+
+.create-post-form-card .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+    border: none !important;
+}
+
+.create-post-form-card .MuiOutlinedInput-root {
+    border-bottom: 1px solid #e0e0e0 !important;
+    border-radius: 22px !important;
+}
+
+.create-post-form-card .MuiOutlinedInput-root:hover {
+    border-bottom-color: #d0d0d0 !important;
+}
+
+.create-post-form-card .MuiOutlinedInput-root.Mui-focused {
+    border-bottom-color: var(--color-primary) !important;
+    border-bottom-width: 2px !important;
+}
+
 

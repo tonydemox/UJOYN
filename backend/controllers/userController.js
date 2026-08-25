@@ -29,6 +29,12 @@ exports.updateProfile = async (req, res) => {
             runValidators: true,
         });
 
+        const friendsCount = await Friendship.countDocuments({
+            status: 'accepted',
+            $or: [{ requester: req.userId }, { recipient: req.userId }],
+        });
+        const eventsCount = await Post.countDocuments({ participants: req.userId });
+
         res.status(200).json({
             id: user._id,
             nickname: user.nickname,
@@ -38,6 +44,8 @@ exports.updateProfile = async (req, res) => {
             city: user.city,
             profilePicture: user.profilePicture,
             coverPhoto: user.coverPhoto,
+            friendsCount,
+            eventsCount,
         });
     } catch (error) {
         console.error('Errore aggiornamento profilo:', error);

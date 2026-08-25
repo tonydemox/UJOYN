@@ -215,7 +215,7 @@ export default function ProfilePage() {
                 </div>
             </Container>
 
-            {/* CARD 1: copertina + avatar + nome + tab + hobby */}
+
             <div className="profile-card profile-header-card bubble-card">
                 <div
                     className="profile-card-cover"
@@ -263,7 +263,7 @@ export default function ProfilePage() {
                 </div>
             )}
 
-            {/* CARD 2 + CARD 3: contenuto tab attiva + statistiche, affiancate */}
+
             <Row className="profile-lower-row g-4">
                 <Col md={8}>
                     <div className="profile-card profile-content-card bubble-card">
