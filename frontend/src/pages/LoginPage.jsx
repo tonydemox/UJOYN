@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
+import { GoogleLogin } from '@react-oauth/google';
 import './LoginPage.css';
 
 export default function LoginPage() {
@@ -27,10 +28,29 @@ export default function LoginPage() {
         }
     }
 
+    async function handleGoogleSuccess(credentialResponse) {
+        try {
+            const { data } = await axiosInstance.post('/auth/google', {
+                credential: credentialResponse.credential,
+            });
+            setAccessToken(data.accessToken);
+            setUser(data.user);
+
+            if (data.isNewUser || !data.user.isProfileComplete) {
+                navigate('/complete-profile');
+            } else {
+                navigate('/feed');
+            }
+        } catch (err) {
+            setError('Errore durante l\'accesso con Google');
+        }
+    }
+
     return (
         <div className="auth-page">
             <form onSubmit={handleSubmit} className="auth-form bubble-card">
                 <h1>Accedi</h1>
+
 
                 {error && <p className="auth-error">{error}</p>}
 
@@ -57,6 +77,12 @@ export default function LoginPage() {
                 <button type="submit" disabled={isSubmitting}>
                     {isSubmitting ? 'Accesso in corso...' : 'Accedi'}
                 </button>
+
+                <GoogleLogin
+                    onSuccess={handleGoogleSuccess}
+                    onError={() => setError('Accesso con Google fallito')}
+                    useOneTap={false}
+                />
 
                 <p>
                     Non hai un account? <Link to="/register">Registrati</Link>

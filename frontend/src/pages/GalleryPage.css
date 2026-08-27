@@ -59,3 +59,87 @@
     margin-top: 60px;
     color: var(--text-soft);
 }
+
+.gallery-item {
+    cursor: pointer;
+}
+
+.photo-lightbox {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.photo-lightbox-image {
+    max-width: 85vw;
+    max-height: 82vh;
+    object-fit: contain;
+    cursor: default;
+    border-radius: 8px;
+}
+
+.photo-lightbox-close.MuiIconButton-root {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+.photo-lightbox-close.MuiIconButton-root:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.photo-lightbox-prev.MuiIconButton-root,
+.photo-lightbox-next.MuiIconButton-root {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    width: 48px;
+    height: 48px;
+}
+
+.photo-lightbox-prev.MuiIconButton-root {
+    left: 20px;
+}
+
+.photo-lightbox-next.MuiIconButton-root {
+    right: 20px;
+}
+
+.photo-lightbox-prev.MuiIconButton-root:hover,
+.photo-lightbox-next.MuiIconButton-root:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.photo-lightbox-caption {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    cursor: default;
+}
+
+.photo-lightbox-title.MuiTypography-root {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.photo-lightbox-author.MuiTypography-root {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.photo-lightbox-author.MuiTypography-root:hover {
+    text-decoration: underline;
+}

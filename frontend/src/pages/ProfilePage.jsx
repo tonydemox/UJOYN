@@ -2,18 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import {Avatar, Button, Chip, Typography, Tabs, Tab, Paper, InputBase, IconButton,  } from '@mui/material';
-
-import {
-    Search,
-    Close,
-    LocationOn,
-    PeopleAlt,
-    CalendarMonth,
-    Article,
-    Edit,
-    Delete,
-    PhotoCamera
-} from '@mui/icons-material';
+import { Search, Close, LocationOn, PeopleAlt, CalendarMonth, Article, Edit, Delete, PhotoCamera } from '@mui/icons-material';
 import { useAuth } from '../auth/AuthContext';
 import { useSocket } from '../socket/SocketContext';
 import axiosInstance from '../api/axiosInstance';

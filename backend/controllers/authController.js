@@ -2,6 +2,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const Post = require('../models/Post');
 const Friendship = require('../models/Friendship');
+const { OAuth2Client } = require('google-auth-library');
+const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 function generateAccessToken(userId) {
     return jwt.sign({ userId }, process.env.JWT_ACCESS_SECRET, {
@@ -114,6 +116,75 @@ exports.login = async (req, res) => {
         });
     } catch (error) {
         res.status(500).json({ message: 'Errore durante il login', error: error.message });
+    }
+};
+
+exports.googleLogin = async (req, res) => {
+    try {
+        const { credential } = req.body;
+
+        const ticket = await googleClient.verifyIdToken({
+            idToken: credential,
+            audience: process.env.GOOGLE_CLIENT_ID,
+        });
+        const payload = ticket.getPayload();
+        const { sub: googleId, email, name, picture } = payload;
+
+        let user = await User.findOne({ $or: [{ googleId }, { email }] });
+        let isNewUser = false;
+
+        if (!user) {
+            isNewUser = true;
+            user = await User.create({
+                googleId,
+                email,
+                nickname: name.replace(/\s+/g, '').toLowerCase() + Math.floor(Math.random() * 1000),
+                profilePicture: picture,
+                isProfileComplete: false,
+            });
+        } else if (!user.googleId) {
+            user.googleId = googleId;
+            await user.save();
+        }
+
+        const accessToken = generateAccessToken(user._id);
+        const refreshToken = generateRefreshToken(user._id);
+        user.refreshTokens.push(refreshToken);
+        await user.save();
+
+        res.cookie('refreshToken', refreshToken, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'none',
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+        });
+
+        const friendsCount = await Friendship.countDocuments({
+            status: 'accepted',
+            $or: [{ requester: user._id }, { recipient: user._id }],
+        });
+        const eventsCount = await Post.countDocuments({ participants: user._id });
+
+        res.status(200).json({
+            user: {
+                id: user._id,
+                nickname: user.nickname,
+                email: user.email,
+                age: user.age,
+                hobbies: user.hobbies,
+                city: user.city,
+                profilePicture: user.profilePicture,
+                coverPhoto: user.coverPhoto,
+                isProfileComplete: user.isProfileComplete,
+                friendsCount,
+                eventsCount,
+            },
+            accessToken,
+            isNewUser,
+        });
+    } catch (error) {
+        console.error('Errore login Google:', error);
+        res.status(500).json({ message: 'Errore durante l\'accesso con Google', error: error.message });
     }
 };
 
