@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
+import { setAccessToken } from '../auth/tokenStore';
 import { GoogleLogin } from '@react-oauth/google';
 import './LoginPage.css';
+import axiosInstance from "../api/axiosInstance";
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -10,7 +12,7 @@ export default function LoginPage() {
     const [error, setError] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const { login } = useAuth();
+    const { login, setUser } = useAuth();
     const navigate = useNavigate();
 
     async function handleSubmit(e) {

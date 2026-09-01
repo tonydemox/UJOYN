@@ -42,6 +42,7 @@ export default function RegisterPage() {
 
     async function handleSubmit(e) {
         e.preventDefault();
+        console.log('handleSubmit chiamato, selectedCity:', selectedCity);
         setError('');
 
         if (!selectedCity) {
@@ -52,11 +53,11 @@ export default function RegisterPage() {
         setIsSubmitting(true);
         try {
             await axiosInstance.post('/auth/register', {
-                nickname,
-                email,
-                password,
-                birthDate,
-                hobbies: hobbies.split(',').map((h) => h.trim()).filter(Boolean),
+                nickname: formData.nickname,
+                email: formData.email,
+                password: formData.password,
+                birthDate: formData.birthDate,
+                hobbies: formData.hobbies.split(',').map((h) => h.trim()).filter(Boolean),
                 city: {
                     name: selectedCity.name,
                     province: selectedCity.province,

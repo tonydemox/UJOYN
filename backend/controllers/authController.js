@@ -130,7 +130,7 @@ exports.googleLogin = async (req, res) => {
         const payload = ticket.getPayload();
         const { sub: googleId, email, name, picture } = payload;
 
-        let user = await User.findOne({ $or: [{ googleId }, { email }] });
+        let user = await User.findOne({ $or: [{ googleId }, { email }] }).select('+refreshTokens');
         let isNewUser = false;
 
         if (!user) {
@@ -141,8 +141,10 @@ exports.googleLogin = async (req, res) => {
                 nickname: name.replace(/\s+/g, '').toLowerCase() + Math.floor(Math.random() * 1000),
                 profilePicture: picture,
                 isProfileComplete: false,
+                // birthDate, city, hobbies mancano: andranno completati dopo
             });
         } else if (!user.googleId) {
+            // Utente esistente (registrato con email/password) che ora usa anche Google: colleghiamo l'account
             user.googleId = googleId;
             await user.save();
         }

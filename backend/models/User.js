@@ -40,7 +40,7 @@ const userSchema = new mongoose.Schema(
         },
         birthDate: {
             type: Date,
-            required: true,
+            required: function() { return !this.googleId; },
         },
         hobbies: {
             type: [String],
@@ -49,7 +49,7 @@ const userSchema = new mongoose.Schema(
         city: {
             name: {
                 type: String,
-                required: true,
+                required: function () { return !this.googleId; },
             },
             province: {
                 type: String,
@@ -68,6 +68,7 @@ const userSchema = new mongoose.Schema(
             coordinates: {
                 type: [Number],
                 default: [0, 0],
+                required: function () { return !this.googleId; },
             },
         },
         refreshTokens: {
