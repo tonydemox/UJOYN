@@ -85,7 +85,7 @@
 
 .profile-card-cover {
     width: 100%;
-    height: 280px;
+    height: 350px;
     background: linear-gradient(135deg, var(--color-primary), var(--color-accent-pink));
     background-size: cover;
     background-position: top;
