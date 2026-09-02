@@ -5,6 +5,8 @@ import axiosInstance from '../api/axiosInstance';
 import CitySearchSelect from '../components/CitySearchSelect';
 import '../components/CitySearchSelect.css';
 import './RegisterPage.css';
+import {Container} from "react-bootstrap";
+import {Alert, Button, TextField, Typography} from "@mui/material";
 
 export default function RegisterPage() {
     const [formData, setFormData] = useState({
@@ -73,50 +75,79 @@ export default function RegisterPage() {
     }
 
     return (
-        <div className="auth-page">
-            <form onSubmit={handleSubmit} className="auth-form bubble-card">
-                <h1>Registrati</h1>
+        <div className="register-page register-page">
+            <Container fluid className="register-container" style={{ maxWidth: '500px', margin: '0 auto' }}>
 
-                {error && <p className="auth-error">{error}</p>}
 
-                <label>
-                    Nickname
-                    <input name="nickname" value={formData.nickname} onChange={handleChange} required />
-                </label>
+                {error && <Alert severity="error" className="register-error">{error}</Alert>}
 
-                <label>
-                    Email
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-                </label>
+                <form onSubmit={handleSubmit}>
+                    <div className="register-form-card bubble-card">
+                        <Typography variant="h4" className="register-title">Registrati</Typography>
+                        <div className="register-section">
+                            <TextField
+                                label="Nickname"
+                                name="nickname"
+                                value={formData.nickname}
+                                onChange={handleChange}
+                                fullWidth
+                                required
+                            />
 
-                <label>
-                    Password
-                    <input type="password" name="password" value={formData.password} onChange={handleChange} required />
-                </label>
+                            <TextField
+                                label="Email"
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                fullWidth
+                                required
+                            />
 
-                <label>
-                    Data di nascita
-                    <input type="date" name="birthDate" value={formData.birthDate} onChange={handleChange} required />
-                </label>
+                            <TextField
+                                label="Password"
+                                type="password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                fullWidth
+                                required
+                            />
 
-                <label>
-                    Hobby (separati da virgola)
-                    <input name="hobbies" value={formData.hobbies} onChange={handleChange} placeholder="calcio, lettura, cucina" />
-                </label>
+                            <TextField
+                                label="Hobby"
+                                name="hobbies"
+                                value={formData.hobbies}
+                                onChange={handleChange}
+                                fullWidth
+                                placeholder="calcio, lettura, cucina"
+                                helperText="Separati da virgola"
+                            />
+                        </div>
 
-                <label className="create-post-city-label">
-                    Città
-                    <CitySearchSelect cities={cities} value={selectedCity} onSelect={setSelectedCity} />
-                </label>
+                        <label className="register-city-label">
+                            Città
+                            <CitySearchSelect cities={cities} value={selectedCity} onSelect={setSelectedCity} />
+                        </label>
 
-                <button type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? 'Registrazione in corso...' : 'Registrati'}
-                </button>
+                        <div className="register-section">
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                fullWidth
+                                className="register-submit"
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? 'Registrazione in corso...' : 'Registrati'}
+                            </Button>
 
-                <p>
-                    Hai già un account? <Link to="/login">Accedi</Link>
-                </p>
-            </form>
+                            <Typography variant="body2" style={{ textAlign: 'center', marginTop: '16px', color: 'var(--text-soft)' }}>
+                                Hai già un account? <Link to="/login" style={{ color: 'var(--color-primary)', fontWeight: '600', textDecoration: 'none' }}>Accedi</Link>
+                            </Typography>
+                        </div>
+                    </div>
+                </form>
+            </Container>
         </div>
     );
 }

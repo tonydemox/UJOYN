@@ -5,6 +5,10 @@ import { setAccessToken } from '../auth/tokenStore';
 import { GoogleLogin } from '@react-oauth/google';
 import './LoginPage.css';
 import axiosInstance from "../api/axiosInstance";
+import {Container} from "react-bootstrap";
+
+import {Alert, Button, TextField, Typography} from "@mui/material";
+
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -49,52 +53,64 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="auth-page">
-            <form onSubmit={handleSubmit} className="auth-form bubble-card">
-                <h1>Accedi</h1>
+        <div className="auth-page auth-page">
+            <Container fluid className="auth-container" style={{ maxWidth: '500px', margin: '0 auto' }}>
 
 
-                {error && <p className="auth-error">{error}</p>}
+                {error && <Alert severity="error" className="auth-error">{error}</Alert>}
 
-                <label>
-                    Email
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </label>
+                <form onSubmit={handleSubmit}>
+                    <div className="auth-form-card bubble-card">
+                        <Typography variant="h4" className="auth-title">Accedi</Typography>
+                        <div className="auth-section">
+                            <TextField
+                                label="Email"
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                fullWidth
+                                required
+                            />
 
-                <label>
-                    Password
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </label>
+                            <TextField
+                                label="Password"
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                fullWidth
+                                required
+                            />
+                        </div>
 
-                <button type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? 'Accesso in corso...' : 'Accedi'}
-                </button>
+                        <div className="auth-section">
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                fullWidth
+                                className="auth-submit"
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? 'Accesso in corso...' : 'Accedi'}
+                            </Button>
 
-                <GoogleLogin
-                    onSuccess={handleGoogleSuccess}
-                    onError={() => setError('Accesso con Google fallito')}
-                    useOneTap={false}
-                    theme="outline"
-                    size="large"
-                    shape="pill"
-                    text="continue_with"
-                    width="100%"
-                />
+                            <GoogleLogin
+                                onSuccess={handleGoogleSuccess}
+                                onError={() => setError('Accesso con Google fallito')}
+                                useOneTap={false}
+                                theme="outline"
+                                size="large"
+                                shape="pill"
+                                text="continue_with"
+                                width="100%"
+                            />
 
-                <p>
-                    Non hai un account? <Link to="/register">Registrati</Link>
-                </p>
-            </form>
+                            <Typography variant="body2" style={{ textAlign: 'center', marginTop: '8px', color: 'var(--text-soft)' }}>
+                                Non hai un account? <Link to="/register" style={{ color: 'var(--color-primary)', fontWeight: '600', textDecoration: 'none' }}>Registrati</Link>
+                            </Typography>
+                        </div>
+                    </div>
+                </form>
+            </Container>
         </div>
     );
 }

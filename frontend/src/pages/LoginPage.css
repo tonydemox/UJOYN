@@ -1,96 +1,81 @@
 .auth-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
     min-height: 100vh;
     background-color: var(--bg-page);
-    padding: 24px;
-}
-
-.auth-form {
+    padding: 40px 20px;
+    box-sizing: border-box;
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 380px;
-    background-color: #ffffff;
-    padding: 32px;
+    align-items: center;
+    justify-content: center;
 }
 
-.auth-form h1 {
-    margin: 0 0 24px;
-    font-size: 22px;
+.auth-container {
+    padding: 0 !important;
+    width: 100%;
+    max-width: 500px !important;
+    margin: 0 auto;
+}
+
+.auth-title.MuiTypography-root {
     font-weight: 600;
+    font-size: 26px;
+    margin-bottom: 24px;
     color: var(--text-strong);
     text-align: center;
 }
 
-.auth-form label {
+.auth-error {
+    margin-bottom: 20px;
+}
+
+.auth-form-card {
+    background-color: #ffffff;
+    padding: 32px 24px;
+    border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.auth-section {
     display: flex;
     flex-direction: column;
-    font-size: 13px;
-    color: var(--text-soft);
-    margin-bottom: 16px;
-    gap: 6px;
+    gap: 16px;
+    margin-bottom: 28px;
 }
 
-.auth-form input {
-    padding: 10px 12px;
-    font-size: 14px;
-    border: 1px solid #d5d5d5;
-    border-radius: 8px;
-    outline: none;
-    transition: border-color 0.15s ease;
+.auth-section:last-child {
+    margin-bottom: 0;
 }
 
-.auth-form input:focus {
-    border-color: var(--color-primary);
-}
-
-.auth-form button {
-    margin-top: 8px;
-    padding: 12px;
-    font-size: 15px;
-    font-weight: 600;
-    color: #ffffff;
+.auth-submit.MuiButton-root {
     background-color: var(--color-primary);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.15s ease;
+    text-transform: none;
+    border-radius: 22px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
 }
 
-.auth-form button:hover:not(:disabled) {
+.auth-submit.MuiButton-root:hover {
     background-color: var(--color-primary-dark);
 }
 
-.auth-form button:disabled {
-    background-color: #c9c2f5;
-    cursor: not-allowed;
+.auth-form-card .MuiOutlinedInput-root {
+    border-bottom: 1px solid #e0e0e0 !important;
+    border-radius: 22px !important;
+    background-color: transparent !important;
 }
 
-.auth-form p {
-    text-align: center;
-    font-size: 13px;
-    color: var(--text-soft);
-    margin-top: 20px;
+.auth-form-card .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+    border: none !important;
 }
 
-.auth-form a {
-    color: var(--color-primary);
-    text-decoration: none;
-    font-weight: 600;
+.auth-form-card .MuiOutlinedInput-root:hover {
+    border-bottom-color: #d0d0d0 !important;
+    background-color: transparent !important;
 }
 
-.auth-form a:hover {
-    text-decoration: underline;
-}
-
-.auth-error {
-    background-color: #fdecec;
-    color: #c62828;
-    font-size: 13px;
-    padding: 10px 12px;
-    border-radius: 8px;
-    margin-bottom: 16px;
-    text-align: center;
+.auth-form-card .MuiOutlinedInput-root.Mui-focused {
+    border-bottom-color: var(--color-primary) !important;
+    border-bottom-width: 2px !important;
+    background-color: transparent !important;
 }
