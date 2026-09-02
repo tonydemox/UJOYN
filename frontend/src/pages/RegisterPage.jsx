@@ -3,17 +3,19 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import axiosInstance from '../api/axiosInstance';
 import CitySearchSelect from '../components/CitySearchSelect';
-import '../components/CitySearchSelect.css';
-import './RegisterPage.css';
 import {Container} from "react-bootstrap";
 import {Alert, Button, TextField, Typography} from "@mui/material";
+import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import dayjs from 'dayjs';
+import '../components/CitySearchSelect.css';
+import './RegisterPage.css';
 
 export default function RegisterPage() {
     const [formData, setFormData] = useState({
         nickname: '',
         email: '',
         password: '',
-        birthDate: '',
         hobbies: '',
         cityId: '',
     });
@@ -22,6 +24,7 @@ export default function RegisterPage() {
     const [error, setError] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [selectedCity, setSelectedCity] = useState(null);
+    const [birthDate, setBirthDate] = useState(null);
 
     const { register } = useAuth();
     const navigate = useNavigate();
@@ -52,13 +55,18 @@ export default function RegisterPage() {
             return;
         }
 
+        if (!birthDate) {
+            setError('Inserisci la data di nascita');
+            return;
+        }
+
         setIsSubmitting(true);
         try {
             await axiosInstance.post('/auth/register', {
                 nickname: formData.nickname,
                 email: formData.email,
                 password: formData.password,
-                birthDate: formData.birthDate,
+                birthDate: birthDate.toISOString(),
                 hobbies: formData.hobbies.split(',').map((h) => h.trim()).filter(Boolean),
                 city: {
                     name: selectedCity.name,
@@ -123,6 +131,16 @@ export default function RegisterPage() {
                                 placeholder="calcio, lettura, cucina"
                                 helperText="Separati da virgola"
                             />
+
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                <DatePicker
+                                    label="Data di nascita"
+                                    value={birthDate}
+                                    onChange={(newValue) => setBirthDate(newValue)}
+                                    slotProps={{ textField: { fullWidth: true, required: true } }}
+                                    maxDate={dayjs().subtract(14, 'year')}
+                                />
+                            </LocalizationProvider>
                         </div>
 
                         <label className="register-city-label">
