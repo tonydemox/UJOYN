@@ -7,7 +7,8 @@ import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
 import {Container} from "react-bootstrap";
-
+import CitySearchSelect from "../components/CitySearchSelect";
+import '../components/CitySearchSelect.css';
 
 export default function UpdatePostPage() {
     const { id } = useParams();
@@ -21,10 +22,14 @@ export default function UpdatePostPage() {
     const [date, setDate] = useState(post?.date || '');
     const [minAge, setMinAge] = useState(post?.minAge || '');
     const [maxAge, setMaxAge] = useState(post?.maxAge || '');
-    const [city, setCity] = useState(post?.title || '');
+    const [cities, setCities] = useState([]);
+    const [selectedCity, setSelectedCity] = useState(post?.city || '');
     const [error, setError] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
+    useEffect(() => {
+        axiosInstance.get('/cities').then(({ data }) => setCities(data));
+    }, []);
 
     useEffect(() => {
         axiosInstance
@@ -33,8 +38,8 @@ export default function UpdatePostPage() {
                 setTitle(data.title);
                 setDescription(data.description);
                 setCategory(data.category);
-                setDate(data.date?.slice(0, 16));
-                setCity(data.city);
+                setDate(data.date);
+                setSelectedCity(data.city);
                 setMinAge(data.minAge);
                 setMaxAge(data.maxAge);
             })
@@ -53,6 +58,11 @@ export default function UpdatePostPage() {
                description,
                category,
                date,
+                city: {
+                    name: selectedCity.name,
+                    province: selectedCity.province,
+                    coordinates: [selectedCity.lng, selectedCity.lat],
+                },
                minAge: Number(minAge),
                maxAge: Number(maxAge),
                 });
@@ -108,6 +118,9 @@ export default function UpdatePostPage() {
                                 }}
                             />
                         </LocalizationProvider>
+                        <label className="create-post-city-label">
+                            <CitySearchSelect cities={cities} value={selectedCity} onSelect={setSelectedCity} />
+                        </label>
                         <TextField
                             label="Età minima"
                             type="number"

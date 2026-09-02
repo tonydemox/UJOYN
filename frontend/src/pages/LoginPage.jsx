@@ -84,10 +84,10 @@ export default function LoginPage() {
                     onSuccess={handleGoogleSuccess}
                     onError={() => setError('Accesso con Google fallito')}
                     useOneTap={false}
-                    theme="outline"        // "outline" | "filled_blue" | "filled_black"
-                    size="large"           // "large" | "medium" | "small"
-                    shape="pill"           // "rectangular" | "pill" | "circle" | "square"
-                    text="continue_with"   // "signin_with" | "signup_with" | "continue_with"
+                    theme="outline"
+                    size="large"
+                    shape="pill"
+                    text="continue_with"
                     width="100%"
                 />
 
