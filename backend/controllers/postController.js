@@ -272,7 +272,7 @@ exports.uploadPostPhoto = async (req, res) => {
         const post = await Post.findById(req.params.id);
         if (!post) return res.status(404).json({message: 'Attività non trovata'});
 
-        const isAuthor = post.author.toString() === req.userId;
+        const isAuthor = post.author?.toString() === req.userId;
         const isParticipant = post.participants.some((p) => p.toString() === req.userId);
 
         if (!isAuthor && !isParticipant) {
