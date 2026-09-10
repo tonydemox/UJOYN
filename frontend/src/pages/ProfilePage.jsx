@@ -26,7 +26,7 @@ export default function ProfilePage() {
     useEffect(() => {
         axiosInstance.get('/posts/mine').then(({ data }) => setMyPosts(data));
         axiosInstance.get('/posts/mine/photos').then(({ data }) => setMyPhotos(data));
-        axiosInstance.get('posts/mine/events').then(({ data }) => setJoinedPosts(data));
+        axiosInstance.get('/posts/mine/events').then(({ data }) => setJoinedPosts(data));
     }, []);
 
     const handleSearch = useCallback((query) => {
