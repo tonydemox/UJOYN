@@ -398,7 +398,7 @@ export default function ProfilePage() {
                                                             {post.category} · {new Date(post.date).toLocaleDateString('it-IT')} · {new Date(post.date).toLocaleTimeString('it-IT')}
                                                         </Typography>
                                                         <Typography className="profile-feed-item-meta">
-                                                            Organizzato da {post.author.nickname}
+                                                            Organizzato da {post.author?.nickname ?? 'Utente sconosciuto'}
                                                         </Typography>
 
                                                         {!isPast && (
