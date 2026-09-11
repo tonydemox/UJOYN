@@ -99,3 +99,12 @@
     height: 45px;
     border-radius: 12px;
 }
+
+.sidebar-logout-btn {
+    border-radius: 14px !important;
+    font-size: 14px;
+    padding: 8px 12px;
+    color: var(--text-soft);
+    border-color: #e0e0e0;
+    text-transform: none;
+}

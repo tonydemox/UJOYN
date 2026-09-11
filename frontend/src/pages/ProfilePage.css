@@ -75,7 +75,28 @@
     border-radius: 999px;
     font-size: 12px;
     padding: 4px 14px;
+}
+
+/* Solo per variant="contained" (stato "none") */
+.profile-search-add-button.MuiButton-contained {
     background-color: var(--color-primary);
+    color: #fff;
+}
+
+.profile-search-add-button.MuiButton-contained:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* Solo per variant="outlined" (stati "pending" e "accepted") */
+.profile-search-add-button.MuiButton-outlined {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.profile-search-add-button.MuiButton-outlined:hover {
+    background-color: var(--surface-lavender);
+    border-color: var(--color-primary);
 }
 
 .profile-header-card {

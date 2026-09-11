@@ -62,7 +62,7 @@ export default function Sidebar() {
                             </p>
                         </div>
                     </div>
-                    <button className="btn btn-sm w-100 btn-outline-secondary" onClick={handleLogout}>
+                    <button className="btn btn-sm w-100 btn-outline-secondary sidebar-logout-btn" onClick={handleLogout}>
                         <i className="bi bi-box-arrow-right me-2" />
                         Logout
                     </button>
