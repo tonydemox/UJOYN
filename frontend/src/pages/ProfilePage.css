@@ -77,7 +77,6 @@
     padding: 4px 14px;
 }
 
-/* Solo per variant="contained" (stato "none") */
 .profile-search-add-button.MuiButton-contained {
     background-color: var(--color-primary);
     color: #fff;
@@ -87,7 +86,6 @@
     background-color: var(--color-primary-dark);
 }
 
-/* Solo per variant="outlined" (stati "pending" e "accepted") */
 .profile-search-add-button.MuiButton-outlined {
     background-color: transparent;
     color: var(--color-primary);

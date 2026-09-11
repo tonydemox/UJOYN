@@ -79,3 +79,22 @@
     border-bottom-width: 2px !important;
     background-color: transparent !important;
 }
+
+.google-login-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.google-login-wrapper > div {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.google-login-wrapper .gsi-material-button {
+    width: 100% !important;
+}
+
+.google-login-wrapper .gsi-material-button > span {
+    width: 100% !important;
+}

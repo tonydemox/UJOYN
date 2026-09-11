@@ -93,6 +93,7 @@ export default function LoginPage() {
                                 {isSubmitting ? 'Accesso in corso...' : 'Accedi'}
                             </Button>
 
+                            <div className="google-login-wrapper">
                             <GoogleLogin
                                 onSuccess={handleGoogleSuccess}
                                 onError={() => setError('Accesso con Google fallito')}
@@ -103,6 +104,7 @@ export default function LoginPage() {
                                 text="continue_with"
                                 width="100%"
                             />
+                            </div>
 
                             <Typography variant="body2" style={{ textAlign: 'center', marginTop: '8px', color: 'var(--text-soft)' }}>
                                 Non hai un account? <Link to="/register" style={{ color: 'var(--color-primary)', fontWeight: '600', textDecoration: 'none' }}>Registrati</Link>
