@@ -84,17 +84,34 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
 }
 
+/* IMPORTANTE: Forza il div wrapper di GoogleLogin */
 .google-login-wrapper > div {
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: none !important;
+    min-width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
 }
 
+/* Forza il bottone vero */
 .google-login-wrapper .gsi-material-button {
     width: 100% !important;
+    max-width: none !important;
+    min-width: 100% !important;
+    padding: 0 24px !important;
+    height: 48px !important;
 }
 
 .google-login-wrapper .gsi-material-button > span {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* Nasconde eventuali dimensioni hardcoded */
+.google-login-wrapper > div[data-client-id] {
     width: 100% !important;
 }
