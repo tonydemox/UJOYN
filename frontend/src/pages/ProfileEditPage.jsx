@@ -1,4 +1,3 @@
-// src/pages/ProfileEditPage.jsx
 import {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TextField, Button, Chip, Avatar, Alert, CircularProgress } from '@mui/material';

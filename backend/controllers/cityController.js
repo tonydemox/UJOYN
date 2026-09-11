@@ -1,4 +1,3 @@
-// backend/controllers/cityController.js
 const City = require('../models/City');
 
 exports.getAllCities = async (req, res) => {

@@ -1,11 +1,9 @@
-// src/components/Sidebar.jsx
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Avatar } from '@mui/material';
 import { useAuth } from '../auth/AuthContext';
-import { Explore, Person, People, Event, Settings, PhotoLibrary } from '@mui/icons-material';
+import { Explore, Person, People, Event, PhotoLibrary } from '@mui/icons-material';
 import { Nav } from 'react-bootstrap';
 import './Sidebar.css';
-import UJOYN_LOGO from '../UJOYN_LOGO.png';
 
 export default function Sidebar() {
     const { user, logout } = useAuth();

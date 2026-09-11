@@ -1,4 +1,3 @@
-// src/components/CitySearchSelect.jsx
 import { useState, useMemo, useRef, useEffect } from 'react';
 
 export default function CitySearchSelect({ cities, value, onSelect }) {

@@ -1,4 +1,3 @@
-// src/pages/CreatePostPage.jsx
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
@@ -6,7 +5,6 @@ import { TextField, Button, Alert, Typography, Chip } from '@mui/material';
 import { InfoOutlined, EventOutlined, People } from '@mui/icons-material';
 import { LocalizationProvider, DatePicker, TimePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import dayjs from 'dayjs';
 import axiosInstance from '../api/axiosInstance';
 import CitySearchSelect from '../components/CitySearchSelect';
 import '../components/CitySearchSelect.css';
@@ -129,7 +127,6 @@ export default function CreatePostPage() {
                             <label className="create-post-city-label">
                                 <CitySearchSelect cities={cities} value={selectedCity} onSelect={setSelectedCity} />
                             </label>
-
 
                         <div className="create-post-section">
                             <Typography variant="subtitle1" className="create-post-section-title">

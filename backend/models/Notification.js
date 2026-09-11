@@ -8,8 +8,8 @@ const notificationSchema = new mongoose.Schema(
             enum: [ 'post_join', 'friend_request', 'friend_accept'],
             required: true,
         },
-            actor: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // chi ha compiuto l'azione
-            post: { type: mongoose.Schema.Types.ObjectId, ref: 'Post' }, // solo per notifiche legate a un post
+            actor: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+            post: { type: mongoose.Schema.Types.ObjectId, ref: 'Post' },
             read: { type: Boolean, default: false },
         },
     { timestamps: true }

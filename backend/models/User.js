@@ -104,7 +104,7 @@ userSchema.methods.comparePassword = async function (candidatePassword) {
 };
 
 userSchema.virtual('age').get(function () {
-    if (!this.birthDate) return null; // aggiunto: evita il crash quando birthDate non è caricato
+    if (!this.birthDate) return null;
     const today = new Date();
     let age = today.getFullYear() - this.birthDate.getFullYear();
     const monthDiff = today.getMonth() - this.birthDate.getMonth();

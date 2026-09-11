@@ -1,4 +1,3 @@
-// src/pages/GalleryPage.jsx
 import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import {Typography, CircularProgress, IconButton} from '@mui/material';
