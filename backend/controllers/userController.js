@@ -29,6 +29,16 @@ exports.updateProfile = async (req, res) => {
             runValidators: true,
         });
 
+        if (hobbies) {
+            const io = req.app.get('io'); // corretto: prende io dall'app Express
+            if (io) {
+                io.to(req.userId).emit('profile_updated', {
+                    hobbies: user.hobbies,
+                    city: user.city,
+                });
+            }
+        }
+
         const friendsCount = await Friendship.countDocuments({
             status: 'accepted',
             $or: [{ requester: req.userId }, { recipient: req.userId }],

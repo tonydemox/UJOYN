@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { Card, CardContent, Typography, Button, Chip, CircularProgress, Avatar } from '@mui/material';
 import axiosInstance from '../api/axiosInstance';
 import { useAuth } from '../auth/AuthContext';
+import { useSocket } from '../socket/SocketContext';
 import './FeedPage.css';
 
 export default function FeedPage() {
@@ -11,7 +12,7 @@ export default function FeedPage() {
     const [isLoading, setIsLoading] = useState(true);
 
     const { user, refreshUser } = useAuth();
-
+    const { socket } = useSocket();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -20,6 +21,15 @@ export default function FeedPage() {
             .then(({ data }) => setPosts(data))
             .finally(() => setIsLoading(false));
     }, []);
+
+    useEffect(() => {
+        if (!socket) return;
+        function handleProfileUpdated() {
+            axiosInstance.get('/posts/feed').then(({ data }) => setPosts(data));
+        }
+        socket.on('profile_updated', handleProfileUpdated);
+        return () => socket.off('profile_updated', handleProfileUpdated);
+    }, [socket]);
 
     async function handleJoin(postId) {
         try {
